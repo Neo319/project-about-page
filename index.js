@@ -15,10 +15,37 @@ http
         } catch (err) {
           console.error(err);
         }
-        res.end("here");
+        res.end();
+      } else if (req.url === "/about" && req.method === "GET") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+
+        try {
+          const data = fs.readFileSync("./public/about.html", "utf8");
+          res.write(data);
+        } catch (err) {
+          console.error(err);
+        }
+        res.end();
+      } else if (req.url === "/contact-me" && req.method === "GET") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+
+        try {
+          const data = fs.readFileSync("./public/contact-me.html", "utf8");
+          res.write(data);
+        } catch (err) {
+          console.error(err);
+        }
+        res.end();
       } else {
-        console.log("Root: " + req.url);
-        throw new Error("incorrect root");
+        res.writeHead(200, { "Content-Type": "text/html" });
+
+        try {
+          const data = fs.readFileSync("./public/404.html", "utf8");
+          res.write(data);
+        } catch (err) {
+          console.error(err);
+        }
+        res.end();
       }
     } catch (error) {
       console.error(error.message);
