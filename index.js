@@ -4,10 +4,9 @@ console.log("hello world");
 
 http
   .createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-
     try {
       if (req.url === "/" && req.method === "GET") {
+        res.writeHead(200, { "Content-Type": "text/plain" });
         res.end("Homepage success");
       } else {
         console.log("Root: " + req.url);
