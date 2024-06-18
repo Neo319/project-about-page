@@ -1,16 +1,16 @@
 // ------------------------------------- EXPRESS VERSION
 
 import express from "express";
+import path from "path";
+
 const app = express();
 const port = 8080;
 
-app.get("/", function (req, res) {
-  res.send("Hello World~!");
-});
+// Middleware to serve static files from the 'public' directory
+app.use(express.static("public"));
 
 app.listen(port, function () {
-  console.log(`Example app listening on port 
-    ${port}!`);
+  console.log(`Example app listening on port ${port}!`);
 });
 
 //
